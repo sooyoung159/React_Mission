@@ -1,10 +1,15 @@
+import { useRef } from "react";
+import useModal from "../hooks/useModal";
 import "./MovieModal.css";
 
 const MovieModal = (props) => {
+  const modalRef = useRef();
+  useModal(modalRef, () => props.setModalOpen(false));
+
   return (
-    <div className="presentation" onClick={() => props.setModalOpen(false)}>
+    <div className="presentation" ref={modalRef}>
       <div className="wrapper-modal">
-        <div className="modal">
+        <div className="modal" ref={modalRef}>
           <span
             onClick={() => props.setModalOpen(false)}
             className="modal-close"
